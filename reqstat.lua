@@ -27,6 +27,31 @@ function request_time_count(identifier)
     statistics_dict:set(request_time_count_key, sum, 86400)
 end
 
+-- request 4xx code count
+function request_4xx_code_count(identifier)
+    local status_code = tonumber(ngx.var.status)
+    local request_4xx_count_key = identifier .. "4xx_code_count"
 
+    if status_code >= 400 and status_code < 500 then
+        local new_value, err = statistics_dict:incr(request_4xx_count_key, 1)
+        if not new_value and err == "not found" then
+            statistics_dict:add(request_4xx_count_key, 0, 86400)
+            stat_util.incr(statistics_dict, request_4xx_count_key, 1)
+        end
+    end
+end
 
+-- request 5xx code count
+function request_4xx_code_count(identifier)
+    local status_code = tonumber(ngx.var.status)
+    local request_5xx_count_key = identifier .. "5xx_code_count"
+
+    if status_code >= 500 then
+        local new_value, err = statistics_dict:incr(request_5xx_count_key, 1)
+        if not new_value and err == "not found" then
+            statistics_dict:add(request_5xx_count_key, 0, 86400)
+            stat_util.incr(statistics_dict, request_5xx_count_key, 1)
+        end
+    end
+end
 
