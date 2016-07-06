@@ -46,13 +46,14 @@ nginx请求各项指标的监控与统计
 
 - curl -v "http://localhost:6080/nginx_status"
 
-
-    Server Name key:test.xxx.com
-    Request Count:12
-    Request Time Sum:0
-    Flow Sum:5446
-    4xx Code Count:3
-    5xx Code Count:0 
+```
+Server Name key:test.xxx.com
+Request Count:12
+Request Time Sum:0
+Flow Sum:5446
+4xx Code Count:3
+5xx Code Count:0 
+```
 
 - curl -v "http://localhost:6080/nginx_status?domain=test.xxx.com"
 - curl -v "http://localhost:6080/nginx_status?domain=test.xxx.com&type=reqc"
