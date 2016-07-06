@@ -49,7 +49,7 @@ function stat_util.showByDomainAndType(dict, type, domain)
         ngx.say("4xx Code Count:", dict:get(identifier .. "__4xx_code_count") or 0)
         ngx.exit(ngx.HTTP_OK)
     elseif type == "5xx" then
-        ngx.say("5xx Count Count:", dict:get(identifier .. "__5xx_code_count") or 0)
+        ngx.say("5xx Code Count:", dict:get(identifier .. "__5xx_code_count") or 0)
         ngx.exit(ngx.HTTP_OK)
     else
         ngx.say("type is error!")
